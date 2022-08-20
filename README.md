@@ -24,10 +24,6 @@
 
 - 由[网易云音乐 Node.js API service](https://github.com/Binaryify/NeteaseCloudMusicApi)提供
 
-## 演示
-
-- https://vogadero.github.io/VuexMusic/
-
 ## Build
 
 > - 首先安装vue-cli脚手架，直接在任意目录执行`npm install vue-cil@5 -g `对应版本为5系列
