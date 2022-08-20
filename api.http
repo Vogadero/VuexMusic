@@ -1,0 +1,88 @@
+# 基准地址：http://cloud-music.pl-fe.cn/
+@baseUrl = http://cloud-music.pl-fe.cn/
+
+###获取搜索歌单列表数据
+GET {{baseUrl}}/cloudsearch 
+    ?keywords=许嵩
+    &limit=500 HTTP/1.1
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+    "keywords":"查询参数",
+    "limit":"每页显示条数"
+}
+
+###获取音乐封面地址
+GET {{baseUrl}}/album 
+    ?id=23232 HTTP/1.1
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+    "id":"音乐id"
+}
+
+###获取音乐热门评论
+GET {{baseUrl}}/comment/hot
+    ?id=23232
+    &type=0 HTTP/1.1
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+    "id":"音乐id",
+    "type":"类型选择"
+}
+
+###获取mv地址
+GET {{baseUrl}}/mv/url
+    ?id=23232 HTTP/1.1
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+    "id":"专辑id"
+}
+
+###获取歌词
+GET {{baseUrl}}/lyric
+    ?id=23232 HTTP/1.1
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+    "id":"音乐id"
+}
+
+###获取歌曲/歌手/封面图片
+GET {{baseUrl}}/song/detail
+    ?ids=23232 HTTP/1.1
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+    "ids":"音乐id"
+}
+
+###获取热歌榜
+GET {{baseUrl}}/playlist/detail
+    ?id=3778678 HTTP/1.1
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+    "id":"热歌榜id-3778678"
+}
+
+###获取推荐新音乐
+GET https://api.uomg.com/api/rand.music
+    ?sort=热歌榜
+    &format=json HTTP/1.1
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+    "sort":"热歌榜",
+    "format":"json类型"
+}

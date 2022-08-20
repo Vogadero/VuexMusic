@@ -1,0 +1,693 @@
+body,
+ul,
+dl,
+dd {
+    margin: 0;
+    padding: 0;
+}
+
+.wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+}
+
+canvas {
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(66, 39, 71, 1);
+}
+
+#lampadario {
+    position: fixed;
+    top: 0;
+    left: 10%;
+}
+
+#filo {
+    position: relative;
+    left: 50%;
+    z-index: 1;
+
+    margin-left: -1px;
+    width: 2px;
+    height: 150px;
+
+    background-color: #000000;
+
+    -webkit-transform-origin: 0 0;
+       -moz-transform-origin: 0 0;
+        -ms-transform-origin: 0 0;
+         -o-transform-origin: 0 0;
+            transform-origin: 0 0;
+    -webkit-animation: oscillaFilo .9s ease-in-out 0s infinite alternate;
+       -moz-animation: oscillaFilo .9s ease-in-out 0s infinite alternate;
+        -ms-animation: oscillaFilo .9s ease-in-out 0s infinite alternate;
+         -o-animation: oscillaFilo .9s ease-in-out 0s infinite alternate;
+            animation: oscillaFilo .9s ease-in-out 0s infinite alternate;
+}
+
+#filo:after {
+    position: absolute;
+    top: 100%;
+    left: -5px;
+
+    border-right: 4px solid transparent;
+    border-bottom: 15px solid #000000;
+    border-left: 4px solid transparent;
+    width: 4px;
+    height: 0;
+
+    content: ' ';
+}
+
+.switching-light[value='off']:checked ~ #filo {
+    -webkit-box-shadow: -80px -10px 7px 0 rgba(0, 0, 0, .1);
+       -moz-box-shadow: -80px -10px 7px 0 rgba(0, 0, 0, .1);
+            box-shadow: -80px -10px 7px 0 rgba(0, 0, 0, .1);
+
+        -ms-box-shadow: -80px -10px 7px 0 rgba(0, 0, 0, .1);
+         -o-box-shadow: -80px -10px 7px 0 rgba(0, 0, 0, .1);
+}
+
+.switching-light[value='off']:checked ~ #filo:after {
+    -webkit-box-shadow: -80px -10px 10px -2px rgba(0, 0, 0, .1);
+       -moz-box-shadow: -80px -10px 10px -2px rgba(0, 0, 0, .1);
+            box-shadow: -80px -10px 10px -2px rgba(0, 0, 0, .1);
+
+        -ms-box-shadow: -80px -10px 10px -2px rgba(0, 0, 0, .1);
+         -o-box-shadow: -80px -10px 10px -2px rgba(0, 0, 0, .1);
+}
+
+.switching-light {
+    position: absolute;
+    top: 150px;
+    z-index: 1;
+
+    margin-left: -45px;
+    width: 90px;
+    height: 70px;
+
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+.switching-light[value='on'] {
+    top: 150px;
+}
+
+.switching-light[value='off'] {
+    top: -100px;
+}
+
+.switching-light[value='on']:checked {
+    top: -100px;
+}
+
+.switching-light[value='on']:checked + .switching-light[value='off'] {
+    top: 150px;
+}
+
+label {
+    position: absolute;
+    top: 164px;
+    left: 0;
+
+    margin-left: -24px;
+    -webkit-border-radius: 100%;
+       -moz-border-radius: 100%;
+            border-radius: 100%;
+    width: 51px;
+    height: 51px;
+
+    -webkit-animation: oscillaLampadina .9s ease-in-out 0s infinite alternate;
+       -moz-animation: oscillaLampadina .9s ease-in-out 0s infinite alternate;
+        -ms-animation: oscillaLampadina .9s ease-in-out 0s infinite alternate;
+         -o-animation: oscillaLampadina .9s ease-in-out 0s infinite alternate;
+            animation: oscillaLampadina .9s ease-in-out 0s infinite alternate;
+
+        -ms-border-radius: 100%;
+         -o-border-radius: 100%;
+}
+
+.switching-light[value='off']:checked ~ label {
+    background: rgba(255, 255, 255, .03);
+
+    -webkit-box-shadow: inset 0 1px 5px rgba(255, 255, 255, .1), inset 0 2px 20px rgba(255, 255, 255, .07), -80px -15px 15px -5px rgba(0, 0, 0, .1);
+       -moz-box-shadow: inset 0 1px 5px rgba(255, 255, 255, .1), inset 0 2px 20px rgba(255, 255, 255, .07), -80px -15px 15px -5px rgba(0, 0, 0, .1);
+            box-shadow: inset 0 1px 5px rgba(255, 255, 255, .1), inset 0 2px 20px rgba(255, 255, 255, .07), -80px -15px 15px -5px rgba(0, 0, 0, .1);
+
+        -ms-box-shadow: inset 0 1px 5px rgba(255, 255, 255, .1), inset 0 2px 20px rgba(255, 255, 255, .07), -80px -15px 15px -5px rgba(0, 0, 0, .1);
+         -o-box-shadow: inset 0 1px 5px rgba(255, 255, 255, .1), inset 0 2px 20px rgba(255, 255, 255, .07), -80px -15px 15px -5px rgba(0, 0, 0, .1);
+}
+
+.switching-light[value='on']:checked ~ label {
+    background: rgba(255, 255, 255, 1);
+
+    -webkit-box-shadow: 0 0 10px rgba(255, 255, 255, .8), 0 0 30px rgba(255, 255, 255, .8), 0 0 50px rgba(255, 255, 255, .6), 0 0 70px rgba(255, 255, 255, .6), -80px -15px 120px 0 rgba(255, 255, 255, .4);
+       -moz-box-shadow: 0 0 10px rgba(255, 255, 255, .8), 0 0 30px rgba(255, 255, 255, .8), 0 0 50px rgba(255, 255, 255, .6), 0 0 70px rgba(255, 255, 255, .6), -80px -15px 120px 0 rgba(255, 255, 255, .4);
+            box-shadow: 0 0 10px rgba(255, 255, 255, .8), 0 0 30px rgba(255, 255, 255, .8), 0 0 50px rgba(255, 255, 255, .6), 0 0 70px rgba(255, 255, 255, .6), -80px -15px 120px 0 rgba(255, 255, 255, .4);
+
+        -ms-box-shadow: 0 0 10px rgba(255, 255, 255, .8), 0 0 30px rgba(255, 255, 255, .8), 0 0 50px rgba(255, 255, 255, .6), 0 0 70px rgba(255, 255, 255, .6), -80px -15px 120px 0 rgba(255, 255, 255, .4);
+         -o-box-shadow: 0 0 10px rgba(255, 255, 255, .8), 0 0 30px rgba(255, 255, 255, .8), 0 0 50px rgba(255, 255, 255, .6), 0 0 70px rgba(255, 255, 255, .6), -80px -15px 120px 0 rgba(255, 255, 255, .4);
+}
+
+.switching-light[value='off']:checked ~ label:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    margin-left: 15px;
+    border: 2px solid rgba(255, 255, 255, .03);
+    -webkit-border-radius: 100%;
+       -moz-border-radius: 100%;
+            border-radius: 100%;
+    width: 15px;
+    height: 15px;
+
+    content: ' ';
+
+        -ms-border-radius: 100%;
+         -o-border-radius: 100%;
+}
+
+@keyframes oscillaFilo {
+    from {
+        transform: rotate(5deg);
+    }
+
+    to {
+        transform: rotate(-5deg);
+    }
+}
+
+@keyframes oscillaLampadina {
+    from {
+        transform: rotate(3deg) translate(-16.4px, -1px);
+    }
+
+    to {
+        transform: rotate(-3deg) translate(16.4px, -1px);
+    }
+}
+
+@keyframes ombraTesto {
+    from {
+        transform: translate(1px, 0px) scale(1.01, 1.06) skew(.9deg, 0deg);
+    }
+
+    to {
+        transform: translate(-1px, 0px) scale(1.01, 1.06) skew(-.9deg, 0deg);
+    }
+}
+
+.play_wrap {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    margin-top: -272px;
+    margin-left: -400px;
+    width: 800px;
+    height: 544px;
+}
+
+.search_bar {
+    display: flex;
+
+    position: relative;
+    z-index: 11;
+
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    height: 60px;
+
+    background-color: #000000;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search_bar input {
+    margin-right: 23px;
+    border: 0;
+    border-radius: 17px;
+    width: 296px;
+    height: 34px;
+
+    text-indent: 15px;
+
+    outline: none;
+}
+
+.center_con {
+    display: flex;
+
+    position: relative;
+
+    height: 435px;
+
+    background-color: rgba(255, 255, 255, .6);
+}
+
+.song_wrapper {
+    list-style: none;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    box-sizing: border-box;
+    padding: 10px;
+    width: 200px;
+    height: 435px;
+}
+
+.song_stretch {
+    width: 600px;
+}
+
+.song_list {
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    width: 100%;
+    height: 100%;
+}
+
+.song_list::-webkit-scrollbar {
+    display: none;
+}
+
+.song_list li {
+    display: flex;
+
+    -webkit-border-radius: 20px;
+       -moz-border-radius: 20px;
+            border-radius: 20px;
+    padding-left: 10px;
+    width: 580px;
+    height: 40px;
+
+    font-size: 12px;
+
+    color: #333333;
+
+    align-items: center;
+        -ms-border-radius: 20px;
+         -o-border-radius: 20px;
+    flex-wrap: wrap;
+}
+
+.song_list li:nth-child(odd) {
+    background-color: rgba(240, 240, 240, .3);
+}
+
+.song_list li a {
+    display: block;
+
+    margin-right: 10px;
+    box-sizing: border-box;
+    width: 17px;
+    height: 17px;
+
+    background-image: url('../images/play.png');
+    background-size: 100%;
+}
+
+.song_list li b {
+    overflow: hidden;
+
+    width: 115px;
+
+    font-weight: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.song_stretch .song_list li b {
+    width: 200px;
+}
+
+.song_stretch .song_list li em {
+    width: 150px;
+}
+
+.song_list li span {
+    margin-right: 50px;
+    width: 23px;
+    height: 17px;
+}
+
+.song_list li span i {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    background: url('../images/table.png') left -48px no-repeat;
+
+    cursor: pointer;
+}
+
+.song_list li em,
+.song_list li i {
+    width: 100px;
+
+    font-style: normal;
+}
+
+.player_con {
+    overflow: hidden;
+
+    position: absolute;
+    top: 0;
+    left: 200px;
+
+    width: 400px;
+    height: 435px;
+}
+
+.player_con2 {
+    position: absolute;
+    top: 0;
+    left: 200px;
+
+    width: 400px;
+    height: 435px;
+}
+
+.player_con2 video {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+
+    width: 355px;
+    height: 265px;
+}
+
+.disc {
+    position: absolute;
+    top: 60px;
+    left: 73px;
+    z-index: 9;
+}
+
+.cover {
+    position: absolute;
+    top: 112px;
+    left: 125px;
+    z-index: 8;
+
+    border-radius: 75px;
+    width: 150px;
+    height: 150px;
+}
+
+@keyframes pulsate {
+    0%,
+    18%,
+    22%,
+    25%,
+    53%,
+    57%,
+    100% {
+        text-shadow: 0 0 4px #FFFFFF,
+        0 0 11px #FFFFFF,
+        0 0 19px #FFFFFF,
+        0 0 40px #AEF7DE,
+        0 0 80px #AEF7DE,
+        0 0 90px #AEF7DE,
+        0 0 100px #AEF7DE,
+        0 0 150px #AEF7DE;
+    }
+
+    20%,
+    24%,
+    55% {
+        text-shadow: none;
+    }
+}
+
+@keyframes myAnimation {
+    from {
+        left: 100%;
+    }
+
+    to {
+        left: -120%;
+    }
+}
+
+.textContainer {
+    position: absolute;
+    bottom: 10%;
+    left: 30%;
+    z-index: 8;
+
+    width: 500px;
+    height: 30px;
+
+    font-weight: 700;
+    text-align: center;
+
+    color: #401C44;
+
+    -webkit-animation: pulsate 2.5s infinite alternate, myAnimation 10s linear infinite;
+            animation: pulsate 2.5s infinite alternate, myAnimation 10s linear infinite;
+}
+
+.comment_wrapper {
+    list-style: none;
+
+    position: absolute;
+    top: 0;
+    left: 600px;
+
+    padding: 25px 10px;
+    width: 180px;
+    height: 435px;
+}
+
+.comment_wrapper .title {
+    position: absolute;
+    top: 0;
+
+    margin-top: 5px;
+}
+
+.comment_wrapper .comment_list {
+    overflow: auto;
+
+    height: 410px;
+}
+
+.comment_wrapper .comment_list::-webkit-scrollbar {
+    display: none;
+}
+
+.comment_wrapper dl {
+    position: relative;
+
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-left: 55px;
+}
+
+.comment_wrapper dt {
+    position: absolute;
+    top: 10px;
+    left: 4px;
+}
+
+.comment_wrapper dt img {
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+}
+
+.comment_wrapper dd {
+    font-size: 12px;
+}
+
+.comment_wrapper .name {
+    padding-top: 5px;
+
+    font-weight: bold;
+
+    color: #333333;
+}
+
+.icon {
+    overflow: hidden;
+
+    width: 1.5em;
+    height: 1.5em;
+
+    vertical-align: -.15em;
+
+    fill: currentColor;
+}
+
+.comment_wrapper .detail {
+    margin-top: 5px;
+
+    line-height: 18px;
+
+    color: #666666;
+}
+
+.comment_wrapper .time {
+    margin-top: 5px;
+    margin-left: 52px;
+
+    line-height: 10px;
+
+    color: #070000;
+}
+
+.audio_con {
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    height: 50px;
+
+    background-color: #F1F3F4;
+}
+
+.myaudio {
+    margin-top: 5px;
+    width: 800px;
+    height: 40px;
+
+    background-color: #F1F3F4;
+
+    outline: none;
+}
+
+/* 旋转的动画 */
+@keyframes Rotate {
+    from {
+        transform: rotateZ(0);
+    }
+
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+/* 旋转的类名 */
+.autoRotate {
+    animation-name: Rotate;
+    animation-duration: 5s;
+    animation-play-state: paused;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* 是否正在播放 */
+.player_con.playing .disc,
+.player_con.playing .cover {
+    animation-play-state: running;
+}
+
+.play_bar {
+    position: absolute;
+    top: -10px;
+    left: 200px;
+    z-index: 10;
+
+    transition: 1s;
+    transform: rotate(-25deg);
+    transform-origin: 12px 12px;
+}
+
+/* 播放杆 转回去 */
+.player_con.playing .play_bar {
+    transform: rotate(0);
+}
+
+/* 搜索历史列表 */
+.search_history {
+    overflow: hidden;
+
+    list-style: none;
+
+    position: absolute;
+    top: 50px;
+    right: 23px;
+
+    box-sizing: border-box;
+    border-radius: 17px;
+    padding: 10px 20px;
+    width: 296px;
+
+    background-color: rgba(255, 255, 255, .3);
+}
+
+.search_history li {
+    font-size: 12px;
+    line-height: 24px;
+
+    cursor: pointer;
+}
+
+.switch_btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    cursor: pointer;
+}
+
+.right_line {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.video_con video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 990;
+
+    margin-top: -273px;
+    width: 800px;
+    height: 546px;
+
+    transform: translateX(-50%);
+}
+
+.video_con .mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 980;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, .8);
+}
+
+.video_con .shutoff {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 995;
+
+    margin-top: -273px;
+    margin-left: 400px;
+    width: 40px;
+    height: 40px;
+
+    background: url('../images/shutoff.png') no-repeat;
+}
